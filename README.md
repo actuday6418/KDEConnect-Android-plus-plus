@@ -1,6 +1,6 @@
-# KDE Connect - Android app
+# KDE Connect Plus Plus
 
-KDE Connect is a multi-platform app that allows your devices to communicate (eg: your phone and your computer).
+KDE Connect is a multi-platform app that allows your devices to communicate (eg: your phone and your computer). Plus Plus is my spin on KDEConnect, featuring many community MRs ignored by the devs in their Gitlab and including a couple of changes of my own.
 
 ## (Some) Features
 - **Shared clipboard**: copy and paste between your phone and your computer (or any other device).
