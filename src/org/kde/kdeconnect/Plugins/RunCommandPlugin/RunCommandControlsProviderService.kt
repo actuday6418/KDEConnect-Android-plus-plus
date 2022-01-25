@@ -140,7 +140,9 @@ class RunCommandControlsProviderService : ControlsProviderService() {
     private fun getAllCommandsList(): List<CommandEntryWithDevice> {
         val commandList = mutableListOf<CommandEntryWithDevice>()
 
-        for (device in BackgroundService.getInstance().devices.values) {
+        val service = BackgroundService.getInstance() ?: return commandList
+
+        for (device in service.devices.values) {
             if (!device.isReachable) {
                 commandList.addAll(getSavedCommandsList(device))
                 continue
@@ -165,7 +167,12 @@ class RunCommandControlsProviderService : ControlsProviderService() {
 
     private fun getCommandByControlId(controlId: String): CommandEntryWithDevice? {
         val controlIdParts = controlId.split("-")
-        val device = BackgroundService.getInstance().getDevice(controlIdParts[0])
+
+        val service = BackgroundService.getInstance();
+
+        if (service == null) return null
+
+        val device = service.getDevice(controlIdParts[0])
 
         if (device == null || !device.isPaired) return null
 
